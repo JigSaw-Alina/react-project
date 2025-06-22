@@ -1,6 +1,6 @@
 import type { Pizza as PizzaType } from '../types/pizza';
 
-function Pizza({ name, ingredients, price, image, soldOut }: PizzaType) {
+const Pizza = ({ name, ingredients, price, image, soldOut }: PizzaType) => {
   return (
     <li className={`pizza ${soldOut ? 'sold-out' : ''}`}>
       <img src={image} alt={name} />
@@ -11,6 +11,6 @@ function Pizza({ name, ingredients, price, image, soldOut }: PizzaType) {
       </div>
     </li>
   );
-}
+};
 
 export default Pizza;

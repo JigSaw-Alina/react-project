@@ -1,6 +1,6 @@
 import type { OrderProps } from '../types/time';
 
-function Order({ openHour, closeHour }: OrderProps) {
+const Order = ({ openHour, closeHour }: OrderProps) => {
   return (
     <div className="order">
       <p>
@@ -10,6 +10,6 @@ function Order({ openHour, closeHour }: OrderProps) {
       <button className="btn">Order</button>
     </div>
   );
-}
+};
 
 export default Order;

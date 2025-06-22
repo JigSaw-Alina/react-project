@@ -5,7 +5,7 @@ type MenuProps = {
   pizzaData: PizzaType[];
 };
 
-function Menu({ pizzaData }: MenuProps) {
+const Menu = ({ pizzaData }: MenuProps) => {
   const pizzas = pizzaData;
   const numPizzas = pizzas.length;
   return (
@@ -28,6 +28,6 @@ function Menu({ pizzaData }: MenuProps) {
       )}
     </main>
   );
-}
+};
 
 export default Menu;

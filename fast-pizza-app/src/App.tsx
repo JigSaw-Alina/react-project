@@ -3,7 +3,7 @@ import Menu from './components/Menu';
 import Footer from './components/Footer';
 import { pizzaData } from './data/pizzaData';
 
-function App() {
+const App = () => {
   const hour = new Date().getHours();
   const openHour = 12;
   const closeHour = 22;
@@ -16,6 +16,6 @@ function App() {
       <Footer openHour={openHour} closeHour={closeHour} isOpen={isOpen} />
     </div>
   );
-}
+};
 
 export default App;
