@@ -1,7 +1,8 @@
 import type { FormEvent } from 'react';
 import { useState } from 'react';
+import type { FormProps } from '../types/item';
 
-const Form = () => {
+const Form = ({ onAddItems }: FormProps) => {
   const [description, setDescription] = useState<string>('');
   const [quantity, setQuantity] = useState<number>(1);
 
@@ -11,7 +12,9 @@ const Form = () => {
     if (!description) return;
 
     const newItem = { description, quantity, packed: false, id: Date.now() };
-    console.log(newItem);
+
+    onAddItems(newItem);
+
     setDescription('');
     setQuantity(1);
   };

@@ -1,12 +1,27 @@
-import type { Items as ItemTypes } from '../types/item';
+import type { ItemProps } from '../types/item';
 
-const Item = ({ description, quantity, packed }: ItemTypes) => {
+const Item = ({
+  id,
+  description,
+  quantity,
+  packed,
+  onDeleteItems,
+  onToggleItem,
+}: ItemProps) => {
   return (
     <li className="app__list-item">
-      <span className={`app__item ${packed ? 'app-item-packed' : ''}`}>
-        {quantity} {description}
+      <input
+        type="checkbox"
+        checked={packed}
+        onChange={() => onToggleItem(id)}
+      />
+      <span className={`app__item ${packed ? 'item-packed' : ''}`}>
+        {quantity}
+        {description}
       </span>
-      <button className="app__remove-btn">❌</button>
+      <button onClick={() => onDeleteItems(id)} className="app__remove-btn">
+        ❌
+      </button>
     </li>
   );
 };
