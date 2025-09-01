@@ -1,8 +1,6 @@
-import { useState } from 'react';
+import type { SearchProps } from '../types/movie';
 
-const Search = () => {
-  const [query, setQuery] = useState('');
-
+const Search = ({ query, setQuery }: SearchProps) => {
   return (
     <>
       <input
