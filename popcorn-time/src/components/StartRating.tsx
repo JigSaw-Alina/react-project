@@ -1,9 +1,14 @@
 import { useState } from 'react';
-import type { StartRatingProps } from '../types/Movie';
+import type { StartRatingProps } from '../types/movie';
 import Star from './Start';
 
-const StarRating = ({ maxRating = 5 }: StartRatingProps) => {
-  const [rating, setRating] = useState<number>(0);
+const StarRating = ({
+  maxRating = 5,
+  color = '#fcc419',
+  size = 48,
+  defaultRating = 0,
+}: StartRatingProps) => {
+  const [rating, setRating] = useState<number>(defaultRating);
   const [tempRating, setTempRating] = useState<number | null>(null);
 
   const handleRating = (value: number): void => {
@@ -16,11 +21,12 @@ const StarRating = ({ maxRating = 5 }: StartRatingProps) => {
         {Array.from({ length: maxRating }, (_, i) => (
           <Star
             key={i}
-            color="#fcc419"
             full={tempRating ? tempRating >= i + 1 : rating >= i + 1}
             onRate={() => handleRating(i + 1)}
             onHover={() => setTempRating(i + 1)}
             onHoverOut={() => setTempRating(0)}
+            size={size}
+            color={color}
           />
         ))}
         <p style={{ color: 'red' }}>{tempRating || rating || ''}</p>
@@ -30,8 +36,3 @@ const StarRating = ({ maxRating = 5 }: StartRatingProps) => {
 };
 
 export default StarRating;
-
-// ,
-//   className = '',
-//   messages = [],
-//   defaultRating = 0,
