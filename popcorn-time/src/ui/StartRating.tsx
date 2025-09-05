@@ -1,6 +1,12 @@
 import { useState } from 'react';
-import type { StartRatingProps } from '../types/movie';
 import Star from './Start';
+
+export type StartRatingProps = {
+  maxRating: number;
+  defaultRating: number;
+  color: string;
+  size: number;
+};
 
 const StarRating = ({
   maxRating = 5,

@@ -1,5 +1,13 @@
 import React from 'react';
-import type { StarProps } from '../types/movie';
+
+export type StarProps = {
+  full: boolean;
+  color?: string;
+  size?: number;
+  onRate?: (rating: number) => void;
+  onHover?: (rating: number) => void;
+  onHoverOut?: () => void;
+};
 
 const Star = React.memo(
   ({ color, full, size, onRate, onHover, onHoverOut }: StarProps) => {

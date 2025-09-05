@@ -17,7 +17,7 @@
     // Path Aliases
     "baseUrl": "./src",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["*"]
     },
 
     // Output Configuration

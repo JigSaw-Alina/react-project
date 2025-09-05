@@ -38,21 +38,4 @@ export type MainProps = MoviesProps;
 export type ListBoxProps = MoviesProps;
 export type MovieListProps = MoviesProps;
 
-export type BaseStar = {
-  size?: number;
-  color?: string;
-};
 
-export type StartRatingProps = BaseStar & {
-  maxRating: number;
-  defaultRating: number;
-};
-
-export type StarProps = BaseStar & {
-  full: boolean;
-  color?: string;
-  size?: number;
-  onRate?: (rating: number) => void;
-  onHover?: (rating: number) => void;
-  onHoverOut?: () => void;
-};
