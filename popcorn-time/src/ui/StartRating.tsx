@@ -1,17 +1,18 @@
 import { useState } from 'react';
 import Star from './Start';
+import { SizeKey } from '@/ui/config/sizes';
 
 export type StartRatingProps = {
   maxRating: number;
   defaultRating: number;
   color: string;
-  size: number;
+  size?: SizeKey;
 };
 
 const StarRating = ({
   maxRating = 5,
   color = '#fcc419',
-  size = 48,
+  size = 'sm',
   defaultRating = 0,
 }: StartRatingProps) => {
   const [rating, setRating] = useState<number>(defaultRating);

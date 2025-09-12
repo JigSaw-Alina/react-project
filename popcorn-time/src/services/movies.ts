@@ -1,4 +1,4 @@
-import { searchMoviesApi } from '../api/omdbApi';
+import { searchMoviesApi } from '../lib/omdbApi';
 import { MovieData } from '../types/movie';
 
 export const fetchMovies = async (title: string): Promise<MovieData[]> => {

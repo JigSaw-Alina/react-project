@@ -84,7 +84,8 @@ body {
   width: 50rem;
   background-color: #2b3035;
   border-radius: 0.9rem;
-  overflow: scroll;
+  overflow-y: auto;
+  max-height: 40rem;
   position: relative;
 }
 
@@ -104,8 +105,20 @@ body {
   z-index: 999;
 }
 
-.main__list {
-  list-style: none;
-  padding: 0.8rem 0;
-  overflow: scroll;
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #d1e5ff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#624bff, #ff22e6);
+  border-radius: 1rem;
+}
+
+.Loading {
+  font-size: large;
+  color: red;
 }

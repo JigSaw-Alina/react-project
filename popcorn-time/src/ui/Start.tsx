@@ -1,9 +1,10 @@
 import React from 'react';
+import { SizeKey } from '@/ui/config/sizes';
 
-export type StarProps = {
+type StarProps = {
   full: boolean;
   color?: string;
-  size?: number;
+  size?: SizeKey;
   onRate?: (rating: number) => void;
   onHover?: (rating: number) => void;
   onHoverOut?: () => void;

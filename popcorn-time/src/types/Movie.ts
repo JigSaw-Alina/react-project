@@ -25,17 +25,21 @@ export type WatchedData = {
 // A single movie
 export type MovieProps = {
   movie: MovieData;
+  onSelectedMovie: (movieId: string | null) => void;
 };
 
 // A collection of movies
 export type MoviesProps = {
   movies: MovieData[];
+  onSelectedMovie: (movieId: string | null) => void;
+};
+
+export type NumResultProps = {
+  movies: MovieData[];
 };
 
 // Reuse MoviesProps if needed (optional aliases for clarity)
-export type NumResultProps = MoviesProps;
+
 export type MainProps = MoviesProps;
 export type ListBoxProps = MoviesProps;
 export type MovieListProps = MoviesProps;
-
-
