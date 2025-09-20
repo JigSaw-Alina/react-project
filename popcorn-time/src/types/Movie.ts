@@ -7,19 +7,31 @@ export type SearchProps = {
 
 export type MovieData = {
   imdbID: string;
-  Title: string;
-  Year: string;
+  title: string;
+  year: string;
   Poster: string;
 };
 
 export type WatchedData = {
   imdbID: string;
   Title: string;
-  Year: string;
+  year: string;
   Poster: string;
-  runtime: number;
+  Runtime: string;
   imdbRating: number;
   userRating: number;
+  Released: string;
+  Plot: string;
+  actors: string;
+  director: string;
+  Genre: string;
+};
+
+
+export type WatchedMovieData = MovieData & {
+  imdbRating: number;
+  Runtime: number;
+  userRating: number | null
 };
 
 // A single movie
@@ -34,12 +46,19 @@ export type MoviesProps = {
   onSelectedMovie: (movieId: string | null) => void;
 };
 
+
+export type WatchedSummaryProps = {
+  watched: WatchedData[];
+}
+
 export type NumResultProps = {
   movies: MovieData[];
 };
+
 
 // Reuse MoviesProps if needed (optional aliases for clarity)
 
 export type MainProps = MoviesProps;
 export type ListBoxProps = MoviesProps;
 export type MovieListProps = MoviesProps;
+export type WatchedMovieListProps = WatchedSummaryProps;

@@ -6,18 +6,23 @@ import Main from '@/components/Main';
 import Box from '@/ui/Box';
 import MovieList from '@/components/MovieList';
 import { searchMoviesApi } from '@/lib/omdbApi';
-import { MovieData } from '@/types/movie';
+import { MovieData, WatchedData } from '@/types/movie';
 import WatchedSummary from '@/components/WatchedSummary';
 import WatchedMovieList from './components/WatchedMovieList';
 import MovieDetails from './components/MovieDetails';
-// import StarRating from '@/ui/StartRating';
+import Spinner from '@/ui/Spinner';
+import useDebounce from '@/hooks/useDebounce';
+
+ 
 
 const App = () => {
   const [movie, setMovie] = useState<MovieData[]>([]);
-  const [query, setQuery] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsloading] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [watched, setWatched] = useState<WatchedData[]>([])
+  const [query, setQuery] = useState('');
+  const debouncedQuery  =  useDebounce(query, 500)
 
   // const [userRating, setUserRating] = useState<string>('');
 
@@ -25,17 +30,23 @@ const App = () => {
     const featchData = async () => {
       try {
         setIsloading(true);
-        const data = await searchMoviesApi('Sponge');
+        const data = await searchMoviesApi(debouncedQuery.trim());
         setMovie(data.Search);
-        console.log(data.Search);
       } catch (err: any) {
         setError(err.message);
       } finally {
         setIsloading(false);
       }
     };
-    featchData();
-  }, [query]);
+
+    console.log(debouncedQuery)
+
+    if (debouncedQuery.trim() !== '') {
+      featchData()
+    } else {
+      setMovie([])
+    }
+  }, [debouncedQuery]);
 
   const handleSelectedMovie = (movieId: string | null) => {
     setSelectedId(movieId);
@@ -45,17 +56,43 @@ const App = () => {
     setSelectedId(null);
   };
 
+  const handleAddWatch = (movie: WatchedData) => {
+    setWatched((watched) => [...watched, movie])
+  }
+
+  const handleDeleteWatch = (id: string) => {
+    setWatched((watched) => watched.filter((movie) => movie.imdbID !== id))
+  }
+
+useEffect(() => {
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.code === "Escape") {
+      handleCloseMovie();
+    }
+  };
+
+  document.addEventListener("keydown", handleKeyDown);
+
+  return () => {
+    document.removeEventListener("keydown", handleKeyDown);
+  };
+}, [handleCloseMovie]);
+
+
+
+
   return (
-    // <StarRating maxRating={4} size={24} defaultRating={3} />
+
     <>
-      <NavBar>
+<NavBar>
         <Search query={query} setQuery={setQuery} />
         <Numresult movies={movie} />
       </NavBar>
       <Main>
         <Box>
+
           {isLoading ? (
-            <h1 className="Loading">Loading.....</h1>
+            <div className='App__loading'><Spinner /></div>
           ) : (
             <MovieList movies={movie} onSelectedMovie={handleSelectedMovie} />
           )}
@@ -64,12 +101,15 @@ const App = () => {
           {selectedId ? (
             <MovieDetails
               selectedId={selectedId}
-              handleCloseMovie={handleCloseMovie}
+              onCloseMovie={handleCloseMovie}
+              onAddWatched={handleAddWatch}
+              watched={watched}
+
             />
           ) : (
             <>
-              <WatchedSummary />
-              <WatchedMovieList />
+              <WatchedSummary watched={watched}/>
+              <WatchedMovieList watched={watched} onDeletedWatched={handleDeleteWatch}/>
             </>
           )}
         </Box>

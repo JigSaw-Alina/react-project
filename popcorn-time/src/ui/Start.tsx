@@ -1,23 +1,28 @@
 import React from 'react';
-import { SizeKey } from '@/ui/config/sizes';
+import { SizeKey, sizeStar } from '@/ui/config/sizes';
 
 type StarProps = {
   full: boolean;
   color?: string;
-  size?: SizeKey;
+  size: SizeKey;
   onRate?: (rating: number) => void;
   onHover?: (rating: number) => void;
   onHoverOut?: () => void;
 };
 
+
+
 const Star = React.memo(
   ({ color, full, size, onRate, onHover, onHoverOut }: StarProps) => {
+    const pixelSize = sizeStar[size];
     const startSyle: React.CSSProperties = {
-      width: size,
-      height: size,
+      width: pixelSize,
+      height: pixelSize,
       display: 'inline-block',
       cursor: 'pointer',
     };
+
+    console.log(sizeStar[size])
 
     return (
       <span

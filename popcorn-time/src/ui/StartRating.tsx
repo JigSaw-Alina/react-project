@@ -5,26 +5,29 @@ import { SizeKey } from '@/ui/config/sizes';
 export type StartRatingProps = {
   maxRating: number;
   defaultRating: number;
-  color: string;
+  color?: string;
   size?: SizeKey;
+  onSetRating:(rating: number) => void;
 };
 
 const StarRating = ({
   maxRating = 5,
   color = '#fcc419',
   size = 'sm',
-  defaultRating = 0,
+  defaultRating,
+  onSetRating
 }: StartRatingProps) => {
   const [rating, setRating] = useState<number>(defaultRating);
   const [tempRating, setTempRating] = useState<number | null>(null);
 
   const handleRating = (value: number): void => {
     setRating(value);
+    onSetRating(value)
   };
 
   return (
     <div>
-      <div style={{ color: 'red' }}>
+      <div className='App__star-box'>
         {Array.from({ length: maxRating }, (_, i) => (
           <Star
             key={i}
@@ -36,7 +39,7 @@ const StarRating = ({
             color={color}
           />
         ))}
-        <p style={{ color: 'red' }}>{tempRating || rating || ''}</p>
+        <p style={{ color: '#fcc419' }}>{tempRating || rating || ''}</p>
       </div>
     </div>
   );

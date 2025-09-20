@@ -3,13 +3,15 @@ import type { MovieProps } from '../types/movie';
 const Movie = ({ movie, onSelectedMovie }: MovieProps) => {
   return (
     <li onClick={() => onSelectedMovie(movie.imdbID)}>
-      <img src={movie.Poster} alt={`${movie.Title} poster`} />
-      <h3>{movie.Title}</h3>
-      <div>
-        <p>
-          <span>🗓</span>
-          <span>{movie.Year}</span>
-        </p>
+      <div className='App__Movie-box'>
+        <img src={movie.Poster} alt={`${movie.Title} poster`} />
+          <div className='App__Movie-details'>
+            <h3>{movie.Title}</h3>
+            <p>
+              <span>📆</span>
+              <span>{movie.Year}</span>
+            </p>
+          </div>
       </div>
     </li>
   );
