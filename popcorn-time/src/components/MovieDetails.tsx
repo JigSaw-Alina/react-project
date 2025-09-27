@@ -9,7 +9,7 @@ type MovieDetailsProps = {
   selectedId: string;
   onCloseMovie: () => void;
   onAddWatched: (movie: WatchedMovieData) => void;
-  watched: WatchedData[]
+  watched: WatchedMovieData[]
 };
 const MovieDetails = ({ selectedId, onCloseMovie, onAddWatched, watched }: MovieDetailsProps) => {
   const [movie,setMovie] = useState<WatchedData | null>(null)
@@ -46,7 +46,7 @@ const MovieDetails = ({ selectedId, onCloseMovie, onAddWatched, watched }: Movie
     return <div>No movie selected</div>;
   }
   const {
-    Title: title,
+    title,
     year,
     Poster: poster,
     Runtime: runtime,

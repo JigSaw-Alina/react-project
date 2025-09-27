@@ -2,7 +2,7 @@ export type BaseMovieEntity = {
   imdbID: string;
   title: string;
   year: string;
-  poster: string;
+  Poster: string;
 };
 
 export type MoviesSearchResponse = {

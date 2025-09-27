@@ -1,20 +1,21 @@
-import { WatchedData } from "@/types/movie"
+import { WatchedMovieData } from "@/types/movie"
 
 
 
 type WatchedMovieProps = {
-  movie: WatchedData;
+  movie: WatchedMovieData;
   onDeletedWatched: (id: string) => void;
 }
 
 const WatchedMovie = ({ movie, onDeletedWatched }: WatchedMovieProps) => {
   const {
     Poster: poster,
-    Title: title,
+    title,
     imdbRating,
     userRating,
     Runtime: runtime
   } = movie
+
 
   return (
     <li>

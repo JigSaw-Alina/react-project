@@ -9,16 +9,16 @@ const average = ((numbers: number[]) => {
 
 type WatchedSummaryResult = {
   avgImdbRating: number;
-  avgUserRating: number;
+  avgUserRating: number | null;
   avgRuntime: number;
 };
 
 const WatchedSummary = ({watched} : WatchedSummaryProps) => {
-
   const { avgImdbRating, avgUserRating, avgRuntime } = useMemo<WatchedSummaryResult>(() => {
     const imdbRating = watched.map((movie) => movie.imdbRating);
-    const userRating = watched.map((movie) => movie.userRating);
-    const runTime = watched.map((movie) => parseInt(movie.Runtime, 10));
+    const userRating = watched.map((movie) => movie.userRating)
+                              .filter((rating): rating is number => rating !== null);
+    const runTime = watched.map((movie) => movie.Runtime);
     console.log('test', runTime)
 
     return {
@@ -27,6 +27,7 @@ const WatchedSummary = ({watched} : WatchedSummaryProps) => {
       avgRuntime: average(runTime),
     };
   }, [watched]);
+  
 
   return (
     <div className="App__summary">

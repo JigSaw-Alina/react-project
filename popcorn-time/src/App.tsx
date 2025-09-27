@@ -1,4 +1,4 @@
-import { useEffect, useState, useTransition } from 'react';
+import { useEffect, useState } from 'react';
 import NavBar from '@/components/NavBar';
 import Search from '@/components/Search';
 import Numresult from '@/components/Numresult';
@@ -6,12 +6,13 @@ import Main from '@/components/Main';
 import Box from '@/ui/Box';
 import MovieList from '@/components/MovieList';
 import { searchMoviesApi } from '@/lib/omdbApi';
-import { MovieData, WatchedData } from '@/types/movie';
+import { MovieData, WatchedMovieData } from '@/types/movie';
 import WatchedSummary from '@/components/WatchedSummary';
 import WatchedMovieList from './components/WatchedMovieList';
 import MovieDetails from './components/MovieDetails';
 import Spinner from '@/ui/Spinner';
 import useDebounce from '@/hooks/useDebounce';
+import useLocalStoragae from '@/hooks/useLocalStorage';
 
  
 
@@ -20,11 +21,11 @@ const App = () => {
   const [error, setError] = useState('');
   const [isLoading, setIsloading] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [watched, setWatched] = useState<WatchedData[]>([])
+  const [watched, setWatched] = useLocalStoragae<WatchedMovieData[]>('watched', [])
   const [query, setQuery] = useState('');
   const debouncedQuery  =  useDebounce(query, 500)
 
-  // const [userRating, setUserRating] = useState<string>('');
+
 
   useEffect(() => {
     const featchData = async () => {
@@ -56,7 +57,7 @@ const App = () => {
     setSelectedId(null);
   };
 
-  const handleAddWatch = (movie: WatchedData) => {
+  const handleAddWatch = (movie: WatchedMovieData) => {
     setWatched((watched) => [...watched, movie])
   }
 

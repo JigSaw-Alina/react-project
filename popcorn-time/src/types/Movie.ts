@@ -12,11 +12,7 @@ export type MovieData = {
   Poster: string;
 };
 
-export type WatchedData = {
-  imdbID: string;
-  Title: string;
-  year: string;
-  Poster: string;
+export type WatchedData = MovieData & {
   Runtime: string;
   imdbRating: number;
   userRating: number;
@@ -27,11 +23,10 @@ export type WatchedData = {
   Genre: string;
 };
 
-
 export type WatchedMovieData = MovieData & {
   imdbRating: number;
   Runtime: number;
-  userRating: number | null
+  userRating: number | null;
 };
 
 // A single movie
@@ -48,7 +43,7 @@ export type MoviesProps = {
 
 
 export type WatchedSummaryProps = {
-  watched: WatchedData[];
+  watched: WatchedMovieData[];
 }
 
 export type NumResultProps = {
