@@ -73,6 +73,7 @@ const MovieDetails = ({
     Genre: genre,
   } = movie;
 
+  // handleMovie
   const handleMovie = () => {
     const newWachedMovie: WatchedMovieData = {
       imdbID: selectedId,
