@@ -1,11 +1,10 @@
-import { WatchedSummaryProps } from "@/types/movie";
-import { useMemo } from "react";
+import { WatchedSummaryProps } from '@/types/Movie';
+import { useMemo } from 'react';
 
-const average = ((numbers: number[]) => {
+const average = (numbers: number[]) => {
   if (numbers.length === 0) return 0; // handle empty array
   return numbers.reduce((acc, n) => acc + n, 0) / numbers.length;
-})
-
+};
 
 type WatchedSummaryResult = {
   avgImdbRating: number;
@@ -13,21 +12,22 @@ type WatchedSummaryResult = {
   avgRuntime: number;
 };
 
-const WatchedSummary = ({watched} : WatchedSummaryProps) => {
-  const { avgImdbRating, avgUserRating, avgRuntime } = useMemo<WatchedSummaryResult>(() => {
-    const imdbRating = watched.map((movie) => movie.imdbRating);
-    const userRating = watched.map((movie) => movie.userRating)
-                              .filter((rating): rating is number => rating !== null);
-    const runTime = watched.map((movie) => movie.Runtime);
-    console.log('test', runTime)
+const WatchedSummary = ({ watched }: WatchedSummaryProps) => {
+  const { avgImdbRating, avgUserRating, avgRuntime } =
+    useMemo<WatchedSummaryResult>(() => {
+      const imdbRating = watched.map((movie) => movie.imdbRating);
+      const userRating = watched
+        .map((movie) => movie.userRating)
+        .filter((rating): rating is number => rating !== null);
+      const runTime = watched.map((movie) => movie.Runtime);
+      console.log('test', runTime);
 
-    return {
-      avgImdbRating: average(imdbRating),
-      avgUserRating: average(userRating),
-      avgRuntime: average(runTime),
-    };
-  }, [watched]);
-  
+      return {
+        avgImdbRating: average(imdbRating),
+        avgUserRating: average(userRating),
+        avgRuntime: average(runTime),
+      };
+    }, [watched]);
 
   return (
     <div className="App__summary">
@@ -42,8 +42,8 @@ const WatchedSummary = ({watched} : WatchedSummaryProps) => {
           <span>{avgImdbRating}</span>
         </p>
         <p>
-        <span>🌟</span>
-        <span>{avgUserRating}</span>
+          <span>🌟</span>
+          <span>{avgUserRating}</span>
         </p>
         <p>
           <span>⏳</span>
@@ -51,7 +51,7 @@ const WatchedSummary = ({watched} : WatchedSummaryProps) => {
         </p>
       </div>
     </div>
-  )
+  );
 };
 
 export default WatchedSummary;

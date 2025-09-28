@@ -1,11 +1,9 @@
-import { WatchedMovieData } from "@/types/movie"
-
-
+import { WatchedMovieData } from '@/types/Movie';
 
 type WatchedMovieProps = {
   movie: WatchedMovieData;
   onDeletedWatched: (id: string) => void;
-}
+};
 
 const WatchedMovie = ({ movie, onDeletedWatched }: WatchedMovieProps) => {
   const {
@@ -13,31 +11,35 @@ const WatchedMovie = ({ movie, onDeletedWatched }: WatchedMovieProps) => {
     title,
     imdbRating,
     userRating,
-    Runtime: runtime
-  } = movie
-
+    Runtime: runtime,
+  } = movie;
 
   return (
     <li>
-        <img src={poster} alt={`${title} poster`}  />
-         <h3>{title}</h3>
-        <div>
-          <p>
-            <span>⭐️</span>
-            <span>{imdbRating}</span>
-          </p>
-          <p>
-            <span>🌟</span>
-            <span>{userRating}</span>
-          </p>
-          <p>
-            <span>⏳</span>
-            <span>{runtime} min</span>
-          </p>
-          <button className="btn-delete" onClick={() => onDeletedWatched(movie.imdbID)}>X</button>
-        </div>
+      <img src={poster} alt={`${title} poster`} />
+      <h3>{title}</h3>
+      <div>
+        <p>
+          <span>⭐️</span>
+          <span>{imdbRating}</span>
+        </p>
+        <p>
+          <span>🌟</span>
+          <span>{userRating}</span>
+        </p>
+        <p>
+          <span>⏳</span>
+          <span>{runtime} min</span>
+        </p>
+        <button
+          className="btn-delete"
+          onClick={() => onDeletedWatched(movie.imdbID)}
+        >
+          X
+        </button>
+      </div>
     </li>
   );
-}
+};
 
-export default WatchedMovie
+export default WatchedMovie;

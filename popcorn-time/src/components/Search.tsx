@@ -1,4 +1,4 @@
-import type { SearchProps } from '../types/movie';
+import type { SearchProps } from '@/types/Movie';
 
 const Search = ({ query, setQuery }: SearchProps) => {
   return (

@@ -1,4 +1,4 @@
-import type { MovieListProps } from '../types/movie';
+import type { MovieListProps } from '@/types/Movie';
 import Movie from './Movie';
 
 const MovieList = ({ movies, onSelectedMovie }: MovieListProps) => {

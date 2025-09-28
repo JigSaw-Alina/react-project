@@ -1,4 +1,4 @@
-import type { NumResultProps } from '../types/movie';
+import type { NumResultProps } from '@/types/Movie';
 
 const Numresult = ({ movies }: NumResultProps) => {
   return (
