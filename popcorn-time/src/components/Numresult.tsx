@@ -1,6 +1,7 @@
-import type { NumResultProps } from '@/types/Movie';
+import type { NumResultProps } from '@/types/movie';
 
 const Numresult = ({ movies }: NumResultProps) => {
+  console.log(movies);
   return (
     <div>
       <p className="App__num-results">

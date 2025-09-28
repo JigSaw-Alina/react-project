@@ -1,4 +1,4 @@
-import { WatchedSummaryProps } from '@/types/Movie';
+import { WatchedSummaryProps } from '@/types/movie';
 import { useMemo } from 'react';
 
 const average = (numbers: number[]) => {

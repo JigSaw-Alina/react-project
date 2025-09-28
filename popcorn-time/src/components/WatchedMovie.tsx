@@ -1,4 +1,4 @@
-import { WatchedMovieData } from '@/types/Movie';
+import { WatchedMovieData } from '@/types/movie';
 
 type WatchedMovieProps = {
   movie: WatchedMovieData;

@@ -1,7 +1,7 @@
 export type BaseMovieEntity = {
   imdbID: string;
-  title: string;
-  year: string;
+  Title: string;
+  Year: string;
   Poster: string;
 };
 
