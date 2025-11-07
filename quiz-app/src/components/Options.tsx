@@ -10,7 +10,7 @@ const Options = ({ questions, dispatch, answer }: OptionsProps) => {
   const { options, correctOption } = questions;
   const hasAnswered = answer !== null;
   return (
-    <div>
+    <div className="options">
       {options.map((option: string, index: number) => (
         <button
           className={`btn btn-option ${index === answer ? 'answer' : ''} 
