@@ -32,11 +32,10 @@ body {
 }
 
 .app-header {
-  width: 66rem;
   margin-bottom: 4rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .error {
@@ -86,23 +85,36 @@ body {
   }
 }
 
-.app__start {
+.start {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
-  justify-content: center;
   align-items: center;
 }
 
-.app__btn-start {
-  background-color: var(--color-theme);
+.progress {
+  margin-bottom: 4rem;
+  display: grid;
+  justify-content: space-between;
+  gap: 1.2rem;
+  grid-template-columns: auto auto;
+  font-size: 1.8rem;
   color: var(--color-medium);
-  letter-spacing: 0.1rem;
-  padding: 1.2rem;
-  border-radius: 20rem;
-  text-decoration: none;
-  font-weight: 500;
-  text-transform: uppercase;
+}
+
+progress {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 12px;
+  grid-column: 1 / -1;
+}
+
+::-webkit-progress-bar {
+  background-color: var(--color-medium);
+  border-radius: 100px;
+}
+::-webkit-progress-value {
+  background-color: var(--color-theme);
+  border-radius: 100px;
 }
 
 .btn {
@@ -138,6 +150,10 @@ body {
 
 .btn-ui {
   float: right;
+}
+
+.options {
+  margin-right: 3.2rem;
 }
 
 .btn-option {

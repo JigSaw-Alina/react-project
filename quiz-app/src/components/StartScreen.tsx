@@ -6,10 +6,10 @@ type StartScreenProps = {
 };
 const StartScreen = ({ numQestion, dispatch }: StartScreenProps) => {
   return (
-    <div className="app__start">
+    <div className="start">
       <h1>Welcome to the React Quiz!</h1>
       <h3>{numQestion} question to test your React mastery</h3>
-      <a className="app__btn-start" onClick={() => dispatch({ type: 'start' })}>
+      <a className="btn btn-ui" onClick={() => dispatch({ type: 'start' })}>
         Let's start
       </a>
     </div>
